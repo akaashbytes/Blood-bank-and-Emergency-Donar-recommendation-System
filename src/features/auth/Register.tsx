@@ -26,7 +26,13 @@ export const Register: React.FC = () => {
     setTimeout(async () => {
       await loginAs(role);
       setLoading(false);
-      navigate(role === 'DONOR' ? '/donor/dashboard' : '/requester/dashboard');
+      const routes = {
+        DONOR: '/donor/dashboard',
+        REQUESTER: '/requester/dashboard',
+        COORDINATOR: '/coordinator/dashboard',
+        ADMIN: '/admin/dashboard'
+      };
+      navigate(routes[role] || '/');
     }, 600);
   };
 
@@ -51,7 +57,7 @@ export const Register: React.FC = () => {
             <label className="text-xs font-bold text-[#5A413F] uppercase tracking-wider">
               Account Registration Type
             </label>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button
                 type="button"
                 onClick={() => setRole('DONOR')}
@@ -72,7 +78,18 @@ export const Register: React.FC = () => {
                     : 'bg-white text-[#1B1C1C] border-[#E2BEBC] hover:border-[#8B0015]'
                 }`}
               >
-                <User size={16} /> Patient / Hospital Representative
+                <User size={16} /> Hospital Representative
+              </button>
+              <button
+                type="button"
+                onClick={() => setRole('COORDINATOR')}
+                className={`p-3.5 rounded-lg border font-bold text-sm flex items-center justify-center gap-2 transition-all ${
+                  role === 'COORDINATOR'
+                    ? 'bg-[#8B0015] text-white border-[#8B0015]'
+                    : 'bg-white text-[#1B1C1C] border-[#E2BEBC] hover:border-[#8B0015]'
+                }`}
+              >
+                <Shield size={16} /> Blood Bank Registration
               </button>
             </div>
           </div>
@@ -97,7 +114,7 @@ export const Register: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className={`grid grid-cols-1 ${role === 'DONOR' ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-4`}>
             <Input
               label="Mobile Number"
               placeholder="+91 98765 43210"
@@ -106,12 +123,14 @@ export const Register: React.FC = () => {
               icon={<Phone size={16} />}
               required
             />
-            <Select
-              label="Blood Group"
-              value={bloodGroup}
-              onChange={(e) => setBloodGroup(e.target.value as BloodGroup)}
-              options={BLOOD_GROUPS.map((g) => ({ value: g, label: g }))}
-            />
+            {role === 'DONOR' && (
+              <Select
+                label="Blood Group"
+                value={bloodGroup}
+                onChange={(e) => setBloodGroup(e.target.value as BloodGroup)}
+                options={BLOOD_GROUPS.map((g) => ({ value: g, label: g }))}
+              />
+            )}
             <Input
               label="City / District"
               value={city}
@@ -121,12 +140,13 @@ export const Register: React.FC = () => {
             />
           </div>
 
-          {role === 'REQUESTER' && (
+          {(role === 'REQUESTER' || role === 'COORDINATOR') && (
             <Input
-              label="Hospital / Institution Name (If applicable)"
-              placeholder="e.g. AIIMS Emergency Unit"
+              label={role === 'COORDINATOR' ? "Blood Bank / Institution Name" : "Hospital / Institution Name (If applicable)"}
+              placeholder={role === 'COORDINATOR' ? "e.g. Central Regional Blood Bank" : "e.g. AIIMS Emergency Unit"}
               value={institution}
               onChange={(e) => setInstitution(e.target.value)}
+              required={role === 'COORDINATOR'}
             />
           )}
 
