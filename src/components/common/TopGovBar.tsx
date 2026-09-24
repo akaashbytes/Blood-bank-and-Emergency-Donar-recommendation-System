@@ -8,7 +8,7 @@ export const TopGovBar: React.FC = () => {
 
   const roleLabels: Record<UserRole, string> = {
     DONOR: 'Donor Portal',
-    REQUESTER: 'Requester / Hospital',
+    REQUESTER: 'Hospital Representative',
     COORDINATOR: 'Coordinator / Blood Bank',
     ADMIN: 'System Admin'
   };
@@ -54,7 +54,7 @@ export const TopGovBar: React.FC = () => {
               className="bg-transparent font-bold text-[#8B0015] cursor-pointer focus:outline-none text-[11px]"
             >
               <option value="DONOR">Donor</option>
-              <option value="REQUESTER">Requester (Hospital)</option>
+              <option value="REQUESTER">Hospital Representative</option>
               <option value="COORDINATOR">Coordinator (Blood Bank)</option>
               <option value="ADMIN">System Admin</option>
             </select>

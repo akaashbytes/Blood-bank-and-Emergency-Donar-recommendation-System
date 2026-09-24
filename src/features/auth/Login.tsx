@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
 
   const roleOptions: Array<{ role: UserRole; title: string; desc: string }> = [
     { role: 'DONOR', title: 'Voluntary Donor', desc: 'Book appointments, view history & certificates' },
-    { role: 'REQUESTER', title: 'Hospital / Patient', desc: 'Submit & track emergency blood unit requests' },
+    { role: 'REQUESTER', title: 'Hospital Representative', desc: 'Submit & track emergency blood unit requests' },
     { role: 'COORDINATOR', title: 'Blood Bank Officer', desc: 'Vault management, verification & dispatch' },
     { role: 'ADMIN', title: 'System Administrator', desc: 'National grid oversight & regulatory audit' },
   ];
