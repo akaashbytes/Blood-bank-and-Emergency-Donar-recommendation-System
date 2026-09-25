@@ -1,24 +1,41 @@
-# Logs
-logs
+# Build & Binary outputs
+**/bin/
+**/obj/
+**/out/
+
+# User-specific & IDE files
+.vs/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.user
+*.userosv
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Local environment & secret overrides (appsettings.Development.example.json is tracked)
+appsettings.Development.local.json
+*.secrets.json
+
+# Test results & Coverage
+TestResults/
+*.coverage
+
+# Node.js & Frontend outputs
+node_modules/
+dist/
+dist-ssr/
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

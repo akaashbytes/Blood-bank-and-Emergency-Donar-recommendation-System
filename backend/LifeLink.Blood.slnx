@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LifeLink.Blood.Api/LifeLink.Blood.Api.csproj" />
+    <Project Path="src/LifeLink.Blood.Application/LifeLink.Blood.Application.csproj" />
+    <Project Path="src/LifeLink.Blood.Domain/LifeLink.Blood.Domain.csproj" />
+    <Project Path="src/LifeLink.Blood.Infrastructure/LifeLink.Blood.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LifeLink.Blood.Application.Tests/LifeLink.Blood.Application.Tests.csproj" />
+  </Folder>
+</Solution>
